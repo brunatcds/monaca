@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $(document).on("click", "#alerta", function(){
-        alert("minha Mensagem");
+        alert("Minha mensagem de alerta");
     });
 
     $(document).on("click", "#confirm", function(){
@@ -18,15 +18,15 @@ $(document).ready(function() {
             confirma(2);
         }
     });
-
-    $(document).on("click", "#beep", function(){
-        // Não há suporte direto para beep em JavaScript padrão
-        console.log("Beep não é suportado em JavaScript padrão.");
-    });
-
-    if ("vibrate" in navigator) {
-        console.log("Vibração é suportada");
-    } else {
-        console.log("Vibração não é suportada");
-    }
+    document.getElementById("beep").addEventListener("click", function() {
+  var audio = document.getElementById("audio-beep");
+  audio.play();
 });
+    document.getElementById("vibration").addEventListener("click", function() {
+        if ("vibrate" in navigator) {
+            navigator.vibrate(1000); // Faz o dispositivo vibrar por 1000 milissegundos
+        } else {
+            console.log("Vibração não é suportada neste dispositivo.");
+        }
+    });
+  });
